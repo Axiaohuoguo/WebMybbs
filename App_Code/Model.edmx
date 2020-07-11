@@ -1,0 +1,529 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DbMybbsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admininfo">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="int" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+          <Property Name="jurisdiction" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="articleinfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="classID" Type="int" />
+          <Property Name="wusername" Type="varchar" MaxLength="50" />
+          <Property Name="wtitle" Type="varchar" MaxLength="100" />
+          <Property Name="wcontent" Type="nvarchar(max)" />
+          <Property Name="wpostedtime" Type="date" />
+          <Property Name="wpviews" Type="int" />
+          <Property Name="wcommentsnum" Type="int" />
+          <Property Name="wisFile" Type="nchar" MaxLength="1" />
+          <Property Name="fID" Type="int" />
+        </EntityType>
+        <EntityType Name="blogrollinfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="url" Type="nchar" MaxLength="200" />
+          <Property Name="title" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="classinfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="classname" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="commentinfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pusername" Type="nchar" MaxLength="16" />
+          <Property Name="puserID" Type="int" />
+          <Property Name="particleID" Type="int" />
+          <Property Name="pcontent" Type="nvarchar" MaxLength="200" />
+          <Property Name="ptime" Type="smalldatetime" />
+          <Property Name="pIP" Type="nchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="fileinfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="url" Type="nchar" MaxLength="500" />
+          <Property Name="fType" Type="nchar" MaxLength="50" />
+          <Property Name="fUsername" Type="nchar" MaxLength="50" />
+          <Property Name="fuserID" Type="int" />
+        </EntityType>
+        <EntityType Name="replyCommentinfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pusername" Type="nchar" MaxLength="16" />
+          <Property Name="puserID" Type="int" />
+          <Property Name="commentinfoID" Type="int" />
+          <Property Name="pcontent" Type="nchar" MaxLength="200" />
+          <Property Name="ptime" Type="smalldatetime" />
+          <Property Name="pIP" Type="nchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="userinfo">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="16" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="phone" Type="varchar" MaxLength="50" />
+          <Property Name="jurisdiction" Type="varchar" MaxLength="50" />
+          <Property Name="exper" Type="int" />
+        </EntityType>
+        <Association Name="FK_articleinfo_classinfo">
+          <End Role="classinfo" Type="Self.classinfo" Multiplicity="0..1" />
+          <End Role="articleinfo" Type="Self.articleinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="classinfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="articleinfo">
+              <PropertyRef Name="classID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fileinfo_admininfo">
+          <End Role="admininfo" Type="Self.admininfo" Multiplicity="0..1" />
+          <End Role="fileinfo" Type="Self.fileinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="admininfo">
+              <PropertyRef Name="UID" />
+            </Principal>
+            <Dependent Role="fileinfo">
+              <PropertyRef Name="fuserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fileinfo_userinfo">
+          <End Role="userinfo" Type="Self.userinfo" Multiplicity="0..1" />
+          <End Role="fileinfo" Type="Self.fileinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userinfo">
+              <PropertyRef Name="UID" />
+            </Principal>
+            <Dependent Role="fileinfo">
+              <PropertyRef Name="fuserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_replyCommentinfo_commentinfo">
+          <End Role="commentinfo" Type="Self.commentinfo" Multiplicity="0..1" />
+          <End Role="replyCommentinfo" Type="Self.replyCommentinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="commentinfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="replyCommentinfo">
+              <PropertyRef Name="commentinfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbMybbsModelStoreContainer">
+          <EntitySet Name="admininfo" EntityType="Self.admininfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="articleinfo" EntityType="Self.articleinfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="blogrollinfo" EntityType="Self.blogrollinfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="classinfo" EntityType="Self.classinfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="commentinfo" EntityType="Self.commentinfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="fileinfo" EntityType="Self.fileinfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="replyCommentinfo" EntityType="Self.replyCommentinfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userinfo" EntityType="Self.userinfo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_articleinfo_classinfo" Association="Self.FK_articleinfo_classinfo">
+            <End Role="classinfo" EntitySet="classinfo" />
+            <End Role="articleinfo" EntitySet="articleinfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fileinfo_admininfo" Association="Self.FK_fileinfo_admininfo">
+            <End Role="admininfo" EntitySet="admininfo" />
+            <End Role="fileinfo" EntitySet="fileinfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fileinfo_userinfo" Association="Self.FK_fileinfo_userinfo">
+            <End Role="userinfo" EntitySet="userinfo" />
+            <End Role="fileinfo" EntitySet="fileinfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_replyCommentinfo_commentinfo" Association="Self.FK_replyCommentinfo_commentinfo">
+            <End Role="commentinfo" EntitySet="commentinfo" />
+            <End Role="replyCommentinfo" EntitySet="replyCommentinfo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DbMybbsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="admininfo">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="jurisdiction" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="fileinfo" Relationship="Self.FK_fileinfo_admininfo" FromRole="admininfo" ToRole="fileinfo" />
+        </EntityType>
+        <EntityType Name="articleinfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="classID" Type="Int32" />
+          <Property Name="wusername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="wtitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="wcontent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="wpostedtime" Type="DateTime" Precision="0" />
+          <Property Name="wpviews" Type="Int32" />
+          <Property Name="wcommentsnum" Type="Int32" />
+          <Property Name="wisFile" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="fID" Type="Int32" />
+          <NavigationProperty Name="classinfo" Relationship="Self.FK_articleinfo_classinfo" FromRole="articleinfo" ToRole="classinfo" />
+          <NavigationProperty Name="commentinfo" Relationship="Self.FK_commentinfo_articleinfo" FromRole="articleinfo" ToRole="commentinfo" />
+        </EntityType>
+        <EntityType Name="blogrollinfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="url" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="classinfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="classname" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="articleinfo" Relationship="Self.FK_articleinfo_classinfo" FromRole="classinfo" ToRole="articleinfo" />
+        </EntityType>
+        <EntityType Name="commentinfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pusername" Type="String" MaxLength="16" FixedLength="true" Unicode="true" />
+          <Property Name="puserID" Type="Int32" />
+          <Property Name="particleID" Type="Int32" />
+          <Property Name="pcontent" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ptime" Type="DateTime" Precision="0" />
+          <Property Name="pIP" Type="String" MaxLength="40" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="articleinfo" Relationship="Self.FK_commentinfo_articleinfo" FromRole="commentinfo" ToRole="articleinfo" />
+          <NavigationProperty Name="userinfo" Relationship="Self.FK_commentinfo_userinfo" FromRole="commentinfo" ToRole="userinfo" />
+          <NavigationProperty Name="replyCommentinfo" Relationship="DbMybbsModel.FK_replyCommentinfo_commentinfo" FromRole="commentinfo" ToRole="replyCommentinfo" />
+        </EntityType>
+        <EntityType Name="fileinfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="url" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+          <Property Name="fType" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="fUsername" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="fuserID" Type="Int32" />
+          <NavigationProperty Name="admininfo" Relationship="Self.FK_fileinfo_admininfo" FromRole="fileinfo" ToRole="admininfo" />
+          <NavigationProperty Name="userinfo" Relationship="Self.FK_fileinfo_userinfo" FromRole="fileinfo" ToRole="userinfo" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="userinfo">
+          <Key>
+            <PropertyRef Name="UID" />
+          </Key>
+          <Property Name="UID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="jurisdiction" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="exper" Type="Int32" />
+          <NavigationProperty Name="commentinfo" Relationship="Self.FK_commentinfo_userinfo" FromRole="userinfo" ToRole="commentinfo" />
+          <NavigationProperty Name="fileinfo" Relationship="Self.FK_fileinfo_userinfo" FromRole="userinfo" ToRole="fileinfo" />
+        </EntityType>
+        <Association Name="FK_fileinfo_admininfo">
+          <End Role="admininfo" Type="Self.admininfo" Multiplicity="0..1" />
+          <End Role="fileinfo" Type="Self.fileinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="admininfo">
+              <PropertyRef Name="UID" />
+            </Principal>
+            <Dependent Role="fileinfo">
+              <PropertyRef Name="fuserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_articleinfo_classinfo">
+          <End Role="classinfo" Type="Self.classinfo" Multiplicity="0..1" />
+          <End Role="articleinfo" Type="Self.articleinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="classinfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="articleinfo">
+              <PropertyRef Name="classID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_commentinfo_articleinfo">
+          <End Role="articleinfo" Type="Self.articleinfo" Multiplicity="0..1" />
+          <End Role="commentinfo" Type="Self.commentinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="articleinfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="commentinfo">
+              <PropertyRef Name="particleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_commentinfo_userinfo">
+          <End Role="userinfo" Type="Self.userinfo" Multiplicity="0..1" />
+          <End Role="commentinfo" Type="Self.commentinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userinfo">
+              <PropertyRef Name="UID" />
+            </Principal>
+            <Dependent Role="commentinfo">
+              <PropertyRef Name="puserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fileinfo_userinfo">
+          <End Role="userinfo" Type="Self.userinfo" Multiplicity="0..1" />
+          <End Role="fileinfo" Type="Self.fileinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userinfo">
+              <PropertyRef Name="UID" />
+            </Principal>
+            <Dependent Role="fileinfo">
+              <PropertyRef Name="fuserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbMybbsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="admininfo" EntityType="Self.admininfo" />
+          <EntitySet Name="articleinfo" EntityType="Self.articleinfo" />
+          <EntitySet Name="blogrollinfo" EntityType="Self.blogrollinfo" />
+          <EntitySet Name="classinfo" EntityType="Self.classinfo" />
+          <EntitySet Name="commentinfo" EntityType="Self.commentinfo" />
+          <EntitySet Name="fileinfo" EntityType="Self.fileinfo" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="userinfo" EntityType="Self.userinfo" />
+          <AssociationSet Name="FK_fileinfo_admininfo" Association="Self.FK_fileinfo_admininfo">
+            <End Role="admininfo" EntitySet="admininfo" />
+            <End Role="fileinfo" EntitySet="fileinfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_articleinfo_classinfo" Association="Self.FK_articleinfo_classinfo">
+            <End Role="classinfo" EntitySet="classinfo" />
+            <End Role="articleinfo" EntitySet="articleinfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_commentinfo_articleinfo" Association="Self.FK_commentinfo_articleinfo">
+            <End Role="articleinfo" EntitySet="articleinfo" />
+            <End Role="commentinfo" EntitySet="commentinfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_commentinfo_userinfo" Association="Self.FK_commentinfo_userinfo">
+            <End Role="userinfo" EntitySet="userinfo" />
+            <End Role="commentinfo" EntitySet="commentinfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fileinfo_userinfo" Association="Self.FK_fileinfo_userinfo">
+            <End Role="userinfo" EntitySet="userinfo" />
+            <End Role="fileinfo" EntitySet="fileinfo" />
+          </AssociationSet>
+          <EntitySet Name="replyCommentinfo" EntityType="DbMybbsModel.replyCommentinfo" />
+          <AssociationSet Name="FK_replyCommentinfo_commentinfo" Association="DbMybbsModel.FK_replyCommentinfo_commentinfo">
+            <End Role="commentinfo" EntitySet="commentinfo" />
+            <End Role="replyCommentinfo" EntitySet="replyCommentinfo" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="replyCommentinfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pusername" Type="String" MaxLength="16" FixedLength="true" Unicode="true" />
+          <Property Name="puserID" Type="Int32" />
+          <Property Name="commentinfoID" Type="Int32" />
+          <Property Name="pcontent" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+          <Property Name="ptime" Type="DateTime" Precision="0" />
+          <Property Name="pIP" Type="String" Nullable="false" MaxLength="40" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="commentinfo" Relationship="DbMybbsModel.FK_replyCommentinfo_commentinfo" FromRole="replyCommentinfo" ToRole="commentinfo" />
+        </EntityType>
+        <Association Name="FK_replyCommentinfo_commentinfo">
+          <End Type="DbMybbsModel.commentinfo" Role="commentinfo" Multiplicity="0..1" />
+          <End Type="DbMybbsModel.replyCommentinfo" Role="replyCommentinfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="commentinfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="replyCommentinfo">
+              <PropertyRef Name="commentinfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DbMybbsModelStoreContainer" CdmEntityContainer="DbMybbsEntities">
+          <EntitySetMapping Name="admininfo">
+            <EntityTypeMapping TypeName="DbMybbsModel.admininfo">
+              <MappingFragment StoreEntitySet="admininfo">
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="jurisdiction" ColumnName="jurisdiction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="articleinfo">
+            <EntityTypeMapping TypeName="DbMybbsModel.articleinfo">
+              <MappingFragment StoreEntitySet="articleinfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="classID" ColumnName="classID" />
+                <ScalarProperty Name="wusername" ColumnName="wusername" />
+                <ScalarProperty Name="wtitle" ColumnName="wtitle" />
+                <ScalarProperty Name="wcontent" ColumnName="wcontent" />
+                <ScalarProperty Name="wpostedtime" ColumnName="wpostedtime" />
+                <ScalarProperty Name="wpviews" ColumnName="wpviews" />
+                <ScalarProperty Name="wcommentsnum" ColumnName="wcommentsnum" />
+                <ScalarProperty Name="wisFile" ColumnName="wisFile" />
+                <ScalarProperty Name="fID" ColumnName="fID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="blogrollinfo">
+            <EntityTypeMapping TypeName="DbMybbsModel.blogrollinfo">
+              <MappingFragment StoreEntitySet="blogrollinfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="title" ColumnName="title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="classinfo">
+            <EntityTypeMapping TypeName="DbMybbsModel.classinfo">
+              <MappingFragment StoreEntitySet="classinfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="classname" ColumnName="classname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="commentinfo">
+            <EntityTypeMapping TypeName="DbMybbsModel.commentinfo">
+              <MappingFragment StoreEntitySet="commentinfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="pusername" ColumnName="pusername" />
+                <ScalarProperty Name="puserID" ColumnName="puserID" />
+                <ScalarProperty Name="particleID" ColumnName="particleID" />
+                <ScalarProperty Name="pcontent" ColumnName="pcontent" />
+                <ScalarProperty Name="ptime" ColumnName="ptime" />
+                <ScalarProperty Name="pIP" ColumnName="pIP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fileinfo">
+            <EntityTypeMapping TypeName="DbMybbsModel.fileinfo">
+              <MappingFragment StoreEntitySet="fileinfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="fType" ColumnName="fType" />
+                <ScalarProperty Name="fUsername" ColumnName="fUsername" />
+                <ScalarProperty Name="fuserID" ColumnName="fuserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DbMybbsModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userinfo">
+            <EntityTypeMapping TypeName="DbMybbsModel.userinfo">
+              <MappingFragment StoreEntitySet="userinfo">
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="jurisdiction" ColumnName="jurisdiction" />
+                <ScalarProperty Name="exper" ColumnName="exper" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="replyCommentinfo">
+            <EntityTypeMapping TypeName="DbMybbsModel.replyCommentinfo">
+              <MappingFragment StoreEntitySet="replyCommentinfo">
+                <ScalarProperty Name="pIP" ColumnName="pIP" />
+                <ScalarProperty Name="ptime" ColumnName="ptime" />
+                <ScalarProperty Name="pcontent" ColumnName="pcontent" />
+                <ScalarProperty Name="commentinfoID" ColumnName="commentinfoID" />
+                <ScalarProperty Name="puserID" ColumnName="puserID" />
+                <ScalarProperty Name="pusername" ColumnName="pusername" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="默认值" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

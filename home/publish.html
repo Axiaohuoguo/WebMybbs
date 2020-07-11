@@ -1,0 +1,340 @@
+﻿
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="renderer" content="webkit"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>publish</title>
+<link href="css/ConteTab.css" rel="stylesheet" />
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/nprogress.css"/>
+<link rel="stylesheet" type="text/css" href="css/style.css"/>
+<link rel="apple-touch-icon-precomposed" href="images/icon.png"/>
+<link rel="shortcut icon" href="images/favicon.ico"/>
+    <link href="css/ImageUpload.css" rel="stylesheet" media="screen" />
+  <style type="text/css">
+      .external {
+      position:relative;
+      width:100%;
+      height:1080px;
+      border:solid;
+      border-color:#8c8c8c;
+      }
+      .divUse {
+      position:absolute;
+      left:35px;
+      top:10px;
+      width:46%;
+      height:40px;
+      border:1px solid #8d8d8d;
+      }
+      .divClas {
+      position:absolute;
+      right:35px;
+      top:10px;
+      width:46%;
+      height:40px;
+      border:1px solid #8d8d8d;
+      }
+      .divTitle {
+      position:absolute;
+      left:35px;
+      top:60px;
+      width:94%;
+      height:40px;
+      border:1px solid #8d8d8d;
+      }
+      .divImg {
+      position:absolute;
+      left:35px;
+      top:110px;
+      width:94%;
+      height:250px;
+      border:1px solid #8d8d8d;
+      }
+      .divConte {
+      position:absolute;
+      left:35px;
+      top:365px;
+      width:94%;
+      height:350px;
+      border:1px solid #8d8d8d;
+      }
+      .divFile {
+      position:absolute;
+      left:35px;
+      top:720px;
+      width:94%;
+      height:200px;
+      border:1px solid #8d8d8d;
+      
+      }
+      .divBut {
+      text-align:center;
+      position:absolute;
+      left:35px;
+      top:930px;
+      width:94%;
+      height:50px;
+      border:1px solid #8d8d8d;
+      }
+      .ButBut {
+        width:50px;
+        height:40px;
+        background-color:#32e8e8;
+        margin:5px;
+        border:double;
+
+      }
+      .divSTitle {
+      width:35%;
+      height:100%;
+      text-align:center;
+      vertical-align:middle;
+      border-right:1px solid #8d8d8d;
+      background-color:#c1c1c1;
+      }
+      .spanUser {
+      position:relative;
+      text-align:center;
+      vertical-align:middle;
+      float:right;
+      width:350px;
+      height:100%;
+      margin:5px;
+      color:green;
+      }
+      .texRit {
+      text-align:center;
+      vertical-align:middle;
+      width:100%;
+      height:30px;
+      border:0px ridge #8d8d8d;
+      background-color:#d9d9d9;
+
+      }
+      h4 {
+      color:maroon;
+      text-align:center;
+      width:90%;
+      height:90%;
+      line-height:35px;
+      }
+      .ClasListT {
+      width:90%;
+      height:90%;
+      margin:-3px;
+      border:0px ridge #8d8d8d;
+      background-color:#d9d9d9;
+      }
+      .spanTitle {
+      position:relative;
+      text-align:center;
+      vertical-align:middle;
+      float:right;
+      width:800px;
+      height:100%;
+      color:green;
+      }
+      .texTitlet {
+      width:100%;
+      height:90%;
+      border:0px ridge #8d8d8d;
+      background-color:aliceblue;
+      margin-top:1px;
+      }
+      .divSTitleT {
+      width:20%;
+      height:100%;
+      text-align:center;
+      vertical-align:middle;
+      border-right:1px solid #8d8d8d;
+      background-color:#c1c1c1;
+      }
+      .dicImgRit {
+      position:relative;
+      text-align:center;
+      vertical-align:middle;
+      float:right;
+      width:700px;
+      height:99%;
+      margin-top:-245px;
+      }
+     
+      .TexCont {
+          width: 99%;
+          height: 99%;
+      }
+      .dicfILRit {
+            position:relative;
+            text-align:center;
+            vertical-align:middle;
+            float:right;
+            width:900px;
+            height:99%;
+      }
+     
+  </style>
+<script src="../Scripts/jquery-3.4.1.min.js"></script>
+<script src="../Scripts/jquery-3.4.1.min.js"></script>
+<script src="../Scripts/CommFunction.js"></script>
+<script src="../Scripts/pagelode.js"></script>
+
+<script src="js/nprogress.js"></script>
+<script src="../Scripts/publish.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        getUserSession();
+        getUserName();
+        getClassList();
+        var Pedit = getUrlParam("edit");
+        if (Pedit == null)
+        {
+            $("#ButPulishi").click(function ()
+            {
+                setPublish();
+            });
+        }
+        else
+        {
+            $(".divImg").hide();
+            $(".divFile").hide();
+            getAriinfo(Pedit);
+            $("#ButPulishi").text("修改");
+            $("#ButPulishi").click(function ()
+            {
+                setAriEditor(Pedit);
+            });
+        }
+      });
+</script>
+</head>
+<body class="user-select">
+    <div class="text-left">
+<header class="header">
+<nav class="navbar navbar-default" id="navbar">
+<div class="container">
+  <div class="header-topbar hidden-xs link-border">
+	<ul class="site-nav topmenu">        
+		<li id="liUser"><a href="logn/logn.html" >登录/注册</a></li>       
+	</ul>
+			 勤记录 懂分享</div>
+  <div class="navbar-header">
+	
+	<h1 class="logo hvr-bounce-in"><a href="index.html" title="火锅分享"><img src="images/201610171329086541.png" alt="火锅分享"/></a></h1>
+  </div>
+  <div class="collapse navbar-collapse" id="header-navbar">
+
+	<ul class="nav navbar-nav navbar-right">
+	  <li><a data-cont="数据" title="首页" href="index.html">首页</a></li>
+	</ul>
+  </div>
+</div>
+</nav>
+</header>
+            
+<section class="container">
+<div class="content-wrap">
+      <div class="title" id="titleQ">
+	<h3 style="line-height: 1.3">文章发布</h3>
+  </div>
+    <div class="external">
+        <div class="divUse">
+            <span class="spanUser"><input id="pTexUseName" class="texRit" disabled="disabled"  type="text"  value="用户名" /> </span>
+            <div class="divSTitle"><h4>发布人:</h4></div>            
+        </div>
+        <div class="divClas">
+            <span class="spanUser">
+                <select class="ClasListT">
+                  <!--  类别条目-->
+                </select>
+            </span>
+            <div class="divSTitle"><h4>类别:</h4></div>      
+        </div>
+        <div class="divTitle">
+            <span class="spanTitle"><input placeholder="请输入标题" id="TexTitle" class="texTitlet" type="text"/></span>
+            <div class="divSTitleT"><h4>标题:</h4></div>   
+        </div>
+        <div class="divImg">
+            <div class="divSTitle">
+                <div class="upload-pic">
+                <label class="up-lab" for="add-pic-btn">上传图片</label>
+                <input type="file" accept="image/*" multiple="multiple" class="up-file" id="add-pic-btn"/>	
+                </div>
+            </div>
+             <div class="dicImgRit"> 
+                <div class="group-coms-pic" id="groupTu">
+
+                </div>
+             </div>
+            </div>
+        <div class="divConte">
+            <table style="height:100%;width:100%;">
+                <tr >
+                    <td style="width:20%; border:double 2px #8c8c8c;text-align:center">
+                       <h4>内容:</h4>
+                    </td>
+                    <td>
+                        <textarea placeholder="在这里输入内容" id="TextArea1Con" cols="20" rows="10" class="TexCont"></textarea>
+                    </td>
+                </tr>
+            </table>
+           
+        </div>
+        <div class="divFile">
+            <div class="upload-pic">
+            <label class="up-lab" for="add-fil-btn">上传其他附件</label>
+            <input type="file"  multiple="multiple" class="up-file" id="add-fil-btn"/>	
+            </div>
+            <div class="dicfILRit">
+                <div  class="group-coms-pic" id="OtgroupTu">
+
+                </div>
+            </div>
+
+
+        </div>
+        <div class="divBut">
+            <button id="ButPulishi"  class="ButBut">发布</button>
+            <button  class="ButBut"><a href="index.html">取消</a></button>
+        </div>
+    </div>
+</div>
+
+    <div id="YWaitDialog" 
+        style="background-color:mintcream;
+        position: absolute; 
+        margin: auto; 
+        top: 400px; 
+        left: 400px; 
+        display: none; 
+        height: 5%; 
+        width: 350px;
+        font-size:30px;
+        color:red;">
+        <p style="text-align: center; vertical-align: central;">
+        正在发布请稍等.....  
+        <img  src="images/lod.gif" />
+        </p>
+
+    </div>
+
+
+</section>
+<footer class="footer">
+<div class="container">
+<p>Copyright &copy; 2019.Company name All rights reserved </p>
+</div>
+        <div style="width:100%;height:50px;"></div>
+</footer>
+        <script src="../Scripts/ImgUp.js"></script>
+        <script src="../Scripts/othFile.js"></script>
+<script src="js/scripts.js"></script>
+    </div>
+</body>
+
+</html>

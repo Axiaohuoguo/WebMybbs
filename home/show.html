@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>show</title>
+<link href="css/ConteTab.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../Scripts/CommFunction.js"></script>
+    <script src="../Scripts/pagelode.js"></script>
+    <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if (getUrlParam("ID") == "" || getUrlParam("ID") == null)
+            {
+                $("body").html("");
+                window.location.href = '404.html';
+            }
+            else
+            {
+                
+            }
+            getloadConteByid();
+            lodeComment();
+            var URLt = window.location.href;
+            var Urlimg = "http://qr.topscan.com/api.php?text=" + URLt
+            $("#imgQrcode").attr('src', Urlimg);
+        });
+        getUserSession();
+        
+    </script>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<link href="css/globule.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/nprogress.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+<link rel="apple-touch-icon-precomposed" href="images/icon.png">
+<link rel="shortcut icon" href="images/favicon.ico">
+
+
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/nprogress.js"></script>
+</head>
+<body class="user-select single">
+<header class="header">
+<nav class="navbar navbar-default" id="navbar">
+<div class="container">
+  <div class="header-topbar hidden-xs link-border">
+	<ul class="site-nav topmenu">
+		<li><a href="#" title="RSS订阅" >
+            <!--<i class="fa fa-rss">
+			</i> RSS订阅 -->
+			</a>
+			
+		</li>
+        <li id="liUser"><a title="用户名" href="logn/logn.html" >登录/注册</a></li>
+        
+	</ul>
+	勤记录 懂分享</div>
+  <div class="navbar-header">
+	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-navbar" aria-expanded="false"> <span class="sr-only"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+	<h1 class="logo hvr-bounce-in"><a href="index.html" title="火锅分享"><img src="images/201610171329086541.png" alt="火锅分享"></a></h1>
+  </div>
+  <div class="collapse navbar-collapse" id="header-navbar">
+	
+	<ul class="nav navbar-nav navbar-right">
+	  <li><a data-cont="首页" title="首页" href="index.html">首页</a></li>
+
+	</ul>
+  </div>
+</div>
+</nav>
+</header>
+
+<section class="container">
+
+<div class="content-wrap">
+<div class="content">
+  <header class="article-header">
+	<h1 class="article-title"><a href="#" title="大标题"  >[大标题]</a></h1>
+	<div class="article-meta"> <span class="item article-meta-time">
+	  <time class="time" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="发表时间：2016-10-14"><i class="glyphicon glyphicon-time"></i>时间 2016-10-14</time>
+	  </span> 
+	  <span class="item article-meta-source" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="来源：火锅分享"><i class="glyphicon glyphicon-globe"></i>作者: </span> 
+	  <span class="item article-meta-category" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="主题"><i class="glyphicon glyphicon-list"></i> <a href="#" title="火锅分享" >
+	  主题</a>
+	  </span> 
+	  <span class="item article-meta-views" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="浏览量"><i class="glyphicon glyphicon-eye-open"></i> 阅读量</span> 
+	  <span class="item article-meta-comment" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="评论量"><i class="glyphicon glyphicon-comment"></i> 评论数</span> </div>
+  </header>
+  <article class="article-content">
+	  
+
+	<p class="textpart">[文章效果示例]</p>
+	<div class="divImgS" >
+		<!--<img style="width: 100%; height: 300px;" title="图片" src="images/201610181557196870.png"/>-->
+        	
+	</div>
+     <div class="divFile">
+<!--         其他附件:
+        <ul>
+            <li><a href="../File/otherFile/文件ceshi.zip">文件ceshi.zip</a></li>
+            <li><a href="../File/otherFile/文件ceshi.zip">文件ceshi.zip</a></li>
+            <li><a href="../File/otherFile/文件ceshi.zip">文件ceshi.zip</a></li>
+        </ul>-->
+     </div>
+	
+<!--	<pre class="prettyprint lang-cs">代码示例：
+	public static double JieCheng(int number)
+	{
+		if (number == 0)
+		{
+			return 0;
+		}
+
+		//初始值必须设置为1
+		double result = 1; 
+
+		for (int i = number; i &gt;= 1; i--)
+		{
+			result = result*i;
+		}
+		return result;
+	}</pre>-->
+
+	<!-- <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a></div>
+
+		  <script>                  window._bd_share_config = { "common": { "bdSnsKey": {}, "bdText": "", "bdMini": "2", "bdMiniList": false, "bdPic": "", "bdStyle": "1", "bdSize": "32" }, "share": {} }; with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=0.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+  -->
+     
+  </article>
+  <div class="article-tags">标签：
+ <a href="#list/5/" rel="tag" >标签</a>
+	</div>
+  <div class="relates">
+	<div class="title">
+	  <h3>相关推荐</h3>
+	</div>
+	<ul>
+	  <li><a href="#" title="" >相关推荐列表</a></li>
+	  <li><a href="#" title="" >相关推荐列表</a></li>
+	  <li><a href="#" title="" >相关推荐列表</a></li>
+	</ul>
+  </div>
+  <div class="title" id="comment">
+	<h3>评论</h3>
+  </div>
+  <div id="respond">
+		
+			<div class="comment">
+				<div class="comment-box">
+					<textarea placeholder="评论内容" name="comment-textarea" id="comment-textarea" cols="100%" rows="3" tabindex="3"></textarea>					
+						<button type="submit" name="comment-submit" id="comment-submit" tabindex="4" onclick="addComment()">评6论</button>
+					</div>
+				</div>
+			</div>	
+	</div>
+  <div id="postcomments">
+	<ol id="comment_list" class="commentlist">        
+<!--	<li class="comment-content">
+        <span class="comment-f">#1</span>
+        <div class="comment-main" id ="">
+            <p>
+                <a class="address" href="#" rel="nofollow" target="_blank">ID测试</a>
+                <span class="time">(2016/10/28 11:41:03)</span>
+                <br>评论内容啛啛喳喳
+                
+            </p>
+        </div>
+	</li>
+	<li class="comment-content">
+        <span class="comment-f">#2楼层</span>
+        <div class="comment-main">
+            <p id="P--id">
+                <a style="float:right" href="#" class="ReplyComm">回复</a>
+                <a class="address" href="#" rel="nofollow" target="_blank">ID测试</a>
+                <span class="time">(2016/10/28 11:41:03)</span>
+                <span>IP:192.168.0.0.1 </span>                
+                <br>评论内容啛啛喳喳开机了撒大声地
+                
+            </p>
+
+            <div class="huifu">
+                <a>IDhi</a>
+                <span class="time">(2016/10/28 11:41:03)</span>
+                <br />回复的回复 
+            </div>
+        </div>
+	</li>-->
+
+    </ol>
+  </div>
+</div>
+
+<aside class="sidebar">
+<div class="fixed">
+
+  <div class="widget widget_search">
+	
+	  <div class="input-group">
+		<input id="Texsearch" type="text" name="keyword" class="form-control" size="35" placeholder="请输入关键字" maxlength="15" autocomplete="off">
+		<span class="input-group-btn">
+		<button class="btn btn-default btn-search" name="search" onclick="search()">搜索</button>
+		</span> </div>
+
+  </div>
+</div>
+
+  <div class="widget widget_sentence">
+
+	<a href="#" target="_blank" rel="nofollow" title="火锅分享" >
+	<img style="width: 100%" src="images/ad.jpg" alt="火锅分享" ></a>
+
+</div>
+  <div class="widget widget_sentence">
+
+<a href="#" target="_blank" rel="nofollow" title="火锅分享" >
+	<img style="width: 100%" src="images/201610241224221511.jpg" alt="火锅分享"  ></a>
+
+</div>
+        <img id="imgQrcode" title="扫描二维码分享文章" alt="二维码" style="width:200px; height:200px"/>
+</aside>
+</section>
+        <div class="sk-three-bounce" id="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+<footer class="footer">
+<div class="container">
+ 	<p>Copyright &copy; 2016.Company name All rights reserved </p>
+</div>
+<div id="gotop"><a class="gotop"></a></div>
+    <div style="width:100%;height:50px;"></div>
+</footer>
+<!-- <script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.ias.js"></script>
+<script src="js/scripts.js"></script> -->
+<script src="js/scripts.js"></script>
+</body>
+</html>

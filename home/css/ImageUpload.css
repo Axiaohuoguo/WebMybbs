@@ -1,0 +1,15 @@
+﻿    .upload-pic{ width: 120px;  height: 30px;  line-height: 30px; border-radius: 4px; color: #fff; position: relative; cursor: pointer;
+        font-size: 14px;  background-color: #44b549;  text-align: center;  display: inline-block;
+        vertical-align: middle; margin-left: 8px;  margin-top: 8px;  }
+    .upload-pic .up-lab,.upload-pic .up-file{ width: 100%; height: 100%; position: absolute; left: 0; top: 0; z-index: 2; overflow: hidden;}
+    .upload-pic .up-lab{ background-color: #44b549; cursor: pointer; }
+    .upload-pic .up-file{ z-index: 1;}
+    .group-coms-pic{ padding-top: 30px; overflow: hidden; }
+    .group-coms-pic .item{  width: 116px; height: 148px; border:1px solid #f0f0f0; position: relative; float: left;margin-right: 20px; margin-bottom: 20px; }
+    .group-coms-pic .pic-box{ width:118px; height:117px; border-bottom:1px solid #f0f0f0;  overflow: hidden;  position: relative;}
+    .group-coms-pic .pic-box .img{ height:117px; position: absolute; left: 50%; top: 50%;
+        transform:translate(-50%,-50%);}
+    .group-coms-pic .tk{ padding:0 9px; height: 32px; line-height: 32px; text-align: left;
+        overflow: hidden;  white-space: nowrap;  text-overflow: ellipsis; color: #353535;  font-size: 14px;}
+    .group-coms-pic .item .del{ width:20px; height: 20px; line-height: 20px; text-align: center; border-radius: 50%; color: #fff;
+        background-color: #ff6982; cursor: pointer; font-style: normal; position: absolute; right: -10px; top: -10px; }

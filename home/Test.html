@@ -1,0 +1,399 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="../Scripts/CommFunction.js"></script>
+<!--    <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>-->
+    <script type="text/javascript">
+        var ip = returnCitySN["cip"];
+        //alert(ip);
+        var ID = getUrlParam("id");
+        var page = getUrlParam("page");
+        alert(ID+"\n"+page)
+    </script>
+
+    <script type="text/javascript">
+
+        //$(document).ready(function () {
+
+        //    // $("input:checkbox").prop("checked", "checked");
+
+        //    $("#Checkbox1").click(function () {
+        //        //var B = $("input:checkbox").prop("checked", "checked");
+        //        //if(){}
+        //        if ($("input:checkbox").is(':checked')) {
+                    
+        //            $("input:checkbox").removeAttr("checked");
+        //        }
+        //        else
+        //        {
+        //           $("input:checkbox").prop("checked", "checked");
+        //        }
+
+        //    });
+        //    $(".divDi").after("<div style='background-color:red;width:100px;height:100px;'>");
+        //    $("#Tt").click(function () {
+        //        $("#divtt").show();
+        //    });
+        //    $("#Buts").click(function () {
+        //        $("#divtt").hide();
+        //    });
+        //    var URLt = window.location.href;
+        //    var Urlimg = "http://qr.topscan.com/api.php?text=" + URLt
+        //    $("#Er").attr('src',Urlimg);
+        //});
+       
+
+    </script>
+    <script async id="chevereto-pup-src" 
+    src="https://imgchr.com/sdk/pup.js" 
+    data-url="https://imgchr.com/upload" 
+    data-auto-insert="bbcode-embed-medium">
+
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/nprogress.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <style type="text/css">
+        .divOut {            
+            width:100%;
+           
+            background-color: aliceblue;
+        }
+        .classRow {
+            width:33.33%;
+            height:30px;
+            border:double;
+            border-color: cornflowerblue;
+        }
+        .claTab {
+            width:100%;
+            height:100%;
+        }
+        .claName {
+            width:80%;
+            border-right:double;
+            border-color: cornflowerblue;
+        }
+        .claConte {
+            width:100%;
+            height:200px;
+            vertical-align:text-top;
+        }
+        .claConteOut {
+            border:double;
+            border-color: cornflowerblue;
+        }
+        .labtime {
+        float:right;
+        }
+
+
+        .Tdcheck 
+        {
+        width:30px;
+        }
+        .TdTitle
+        {
+         width:200px;
+        }
+        .TdTime 
+        {
+            width:100px;
+        }
+        .Tdoperate 
+        {
+            width:100px;        
+        }
+        .TdTitle,.TdTime,.Tdoperate,.Tdcheck 
+        {
+            height:30px;
+            background-color: #C0C0C0;
+            border-bottom-style: double;
+            border-bottom-width: 2px;
+            border-bottom-color: #FF0000;
+            border-right:double 2px #FF0000;
+        }
+
+        .auto-style2 {
+            width: 30px;
+            height: 30px;
+            border-right: 2px double #FF0000;
+            border-bottom: 2px double #FF0000;
+            background-color: #C0C0C0;
+        }
+        .auto-style3 {
+            width: 200px;
+            height: 30px;
+            border-right: 2px double #FF0000;
+            border-bottom: 2px double #FF0000;
+            background-color: #C0C0C0;
+        }
+        .auto-style4 {
+            width: 100px;
+            height: 30px;
+            border-right: 2px double #FF0000;
+            border-bottom: 2px double #FF0000;
+            background-color: #C0C0C0;
+        }
+
+    </style>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <div id="YWaitDialog" 
+	style="background-color: #e0e0e0; 
+	position: absolute; 
+	margin: auto; 
+	top: 150px; 
+	left: 300px; 
+	
+	height: 60px; 
+	width: 300px;">
+    <p style="text-align: center; vertical-align: central;">
+        请等待，正在查询数据  <img  src="images/loading.gif" />
+    </p>
+</div>
+
+
+   <div class="divOut">
+       <table style="width:100%"> 
+          <tr>
+              <td class="auto-style2" ><input name="1" id="Checkbox1" type="checkbox" /></td>
+              <td class="auto-style3" >标题</td>
+              <td class="auto-style4">时间</td>
+              <td class="auto-style4">操作</td>
+          </tr>
+          <tr>
+              <td class="Tdcheck" ><input name="chlist" type="checkbox" value="001"/ ></td>
+              <td class="TdTitle" >标题测试</td>
+              <td class="TdTime">2019-11-11</td>
+              <td class="Tdoperate"><a href="#"> 修改 </a></td>
+          </tr>
+       </table>
+<!--<table style="width:100%">
+<tr >
+    <td class="classRow"style="display:none" >
+        <table class="claTab"> 
+            <tr> 
+                <td class="claName"></td>
+                <td class="claMore">&gt;&gt;</td>
+            </tr>
+        </table>
+
+    </td>
+    <td class="classRow">
+                <table class="claTab"> 
+            <tr> 
+                <td class="claName"></td>
+                <td class="claMore">&gt;&gt;</td>
+            </tr>
+        </table>
+    </td>
+    <td class="classRow">
+                <table class="claTab"> 
+            <tr> 
+                <td class="claName"></td>
+                <td class="claMore">&gt;&gt;</td>
+            </tr>
+        </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="claConteOut">
+        <table class="claConte">
+            <tr>
+                <td style="vertical-align:top">
+                    nnn
+                    <img id="Er" style="width:200px;height:200px;" src="images/bg.jpg" />
+                </td>
+            </tr>
+        </table>
+    </td>
+    <td class="claConteOut">
+        <table class="claConte">
+            <tr>
+                <td style="vertical-align:top">
+                    <ul>
+                        
+                       <li class="auto-style1"><span class="labtime">2016-6-6</span> <a href="#">list加壳克了</a></li>
+                        <li><span class="labtime">2016-6-6</span><a href="#">list加壳克了</a></li>
+                        <li><a href="#">list加壳克了</a></li>
+                        <li><a href="#">list加壳克了</a></li>
+                        <li><a href="#">list加壳克了</a></li>
+                        <li><a href="#">list加壳克了</a></li>
+                        <li><a href="#">list加壳克了</a></li>
+                        <li><a href="#">list加壳克了</a></li>
+                        <li><a href="#">list加壳克了</a></li>
+                        
+                       
+                    </ul>
+
+                </td>
+            </tr>
+        </table>
+    </td>
+    <td class="claConteOut">
+        <table class="claConte">
+            <tr>
+                <td style="vertical-align:top">
+                    nnn
+                </td>
+            </tr>
+        </table>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3"><hr /></td>
+  </tr>
+  <tr>
+    <td class="classRow">
+        <table class="claTab"> 
+            <tr> 
+                <td class="claName"></td>
+                <td class="claMore">&gt;&gt;</td>
+            </tr>
+        </table>
+    </td>
+    <td class="classRow">
+        <table class="claTab"> 
+            <tr> 
+                <td class="claName"></td>
+                <td class="claMore">&gt;&gt;</td>
+            </tr>
+        </table>
+    </td>
+    <td class="classRow">
+        <table class="claTab"> 
+            <tr> 
+                <td class="claName"></td>
+                <td class="claMore">&gt;&gt;</td>
+            </tr>
+        </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="claConteOut">
+        <table class="claConte">
+            <tr>
+                <td style="vertical-align:top">
+                    nnn
+                </td>
+            </tr>
+        </table>
+    </td>
+    <td class="claConteOut">
+        <table class="claConte">
+            <tr>
+                <td style="vertical-align:top">
+                    nnn
+                </td>
+            </tr>
+        </table>
+    </td>
+    <td class="claConteOut">
+        <table class="claConte">
+            <tr>
+                <td style="vertical-align:top">
+                    nnn
+                </td>
+            </tr>
+        </table>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3" ><hr /></td>
+  </tr>
+  <tr>
+    <td class="classRow">
+        <table class="claTab"> 
+            <tr> 
+                <td class="claName"></td>
+                <td class="claMore">&gt;&gt;</td>
+            </tr>
+        </table>
+    </td>
+    <td class="classRow">
+        <table class="claTab"> 
+            <tr> 
+                <td class="claName"></td>
+                <td class="claMore">&gt;&gt;</td>
+            </tr>
+        </table>
+    </td>
+    <td class="classRow">
+        <table class="claTab"> 
+            <tr> 
+                <td class="claName"></td>
+                <td class="claMore">&gt;&gt;</td>
+            </tr>
+        </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="claConteOut">
+        <table class="claConte">
+            <tr>
+                <td style="vertical-align:top">
+                    nnn
+                </td>
+            </tr>
+        </table>
+    </td>
+    <td class="claConteOut">
+        <table class="claConte">
+            <tr>
+                <td style="vertical-align:top">
+                    nnn
+                </td>
+            </tr>
+        </table>
+    </td>
+    <td class="claConteOut">
+        <table class="claConte">
+            <tr>
+                <td style="vertical-align:top">
+                    nnn
+                </td>
+            </tr>
+        </table>
+    </td>
+  </tr>
+</table>-->
+    </div>
+<!--    <div class="divDi" style="background-color:aqua;width:100px;height:100px;">
+
+    </div>
+    <a id="Tt" class ="view"> 按键</a>
+    <div id="divtt" style ="display:none">
+        <input  type="text"/>
+        <input  id="Buts" value="Butt" type="button"/>
+    </div>
+  <nav class="pagination" style="display">
+	<ul>
+	  <li class="prev-page"></li>
+	  <li class="active"><span>1</span></li>
+	  <li><a href="?page=2">2</a></li>
+	  <li class="next-page"><a href="?page=2">下一页</a></li>
+	  <li><span>共 2 页</span></li>
+	</ul>
+  </nav>-->
+    <img src="../File/imgFile/195_大火锅_1u=2433587857,858450518&fm=26&gp=0.jpg" />
+    <select>
+        <option value="2">44</option>
+        <option value="1">44</option>
+        <option value="4">44</option>
+    </select>
+    <a href="../File/otherFile/文件ceshi.zip">../File/otherFile/文件ceshi.zip</a>
+    <a href="../File/otherFile/209_kkkk_2DocImport.db-journal">209_kkkk_2DocImport.db-journal</a>
+    <a href="../File/otherFile/209_kkkk_1DocImport.db">../File/otherFile/209_kkkk_1DocImport.db</a>
+    
+    <a href="../File/otherFile/209_kkkk_1DocImport%20.zip">jjjjjjj</a>
+</body>
+    
+
+    
+</html>

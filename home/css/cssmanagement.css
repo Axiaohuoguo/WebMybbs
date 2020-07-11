@@ -1,0 +1,91 @@
+﻿
+        .Tdcheck 
+        {
+        width:30px;
+        }
+        .TdTitle
+        {
+         width:200px;
+        }
+        .TdTime 
+        {
+            width:100px;
+        }
+        .Tdoperate 
+        {
+            width:100px;        
+        }
+        .TdTitle,.TdTime,.Tdoperate,.Tdcheck 
+        {
+            height:30px;
+            background-color: #C0C0C0;
+            border-bottom-style: double;
+            border-bottom-width: 2px;
+            border-bottom-color: #FF0000;
+            border-right:double 2px #FF0000;
+        }
+        
+
+
+              .external {
+      position:relative;
+      width:100%;
+      height:980px;
+      border:solid;
+      border-color:#8c8c8c;
+      }
+      .User-message
+      {
+          width:29%;
+          height:100%;
+          border-right:double 1px #a8a8a8;
+      }
+      .management {
+      width:69%;
+      height:99%;
+      margin-left:30%;
+      margin-top:-970px;
+      border-left:groove;
+      }
+      .divHead {
+      background-color:antiquewhite;
+      width:100px;
+      height:100px;
+      border-radius:50%;
+      border:double 2px #ffd800;
+      background-color:aquamarine;
+      background:url("../logn/images/kodinger.jpg");      
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+
+      }
+      .TabUserM {
+      width:100%;
+      border:double 1px aquamarine;
+      }
+      .TabUserM-td {
+      width:25%;
+
+      }
+      .TabUserM-tr {
+      height:30px;
+      border-bottom:double 1px aquamarine;
+      }
+      .divArList
+      {
+          width:100%;
+          height:90%;
+          margin-top:60px;
+      }
+      .divBut 
+      {
+          margin-bottom:inherit;
+          background-color:aqua;
+      }
+ 
+      .divBut {
+          height:30px;
+          margin-bottom: inherit;
+          background-color: aqua;
+          text-align: center;
+      }
